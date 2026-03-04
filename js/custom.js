@@ -119,7 +119,7 @@ function showGameOver() {
 function reset() {
   user.value = "";
   result.textContent = "결과화면 : UP/DOWN/BINGO!";
-  result.classList.remove("gameover");
+  result.classList.remove("gameover", "neon", "bounce");
 
   chances = 5;
   chance.textContent = `남은찬스 ${chances}번`;
