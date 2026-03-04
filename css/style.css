@@ -411,6 +411,12 @@ dotlottie-player {
     top: 0;
     left: 0;
   }
+  .mcImg .up {
+    width: 100px;
+  }
+  .mcImg .down {
+    width: 100px;
+  }
   #user {
     width: 200px;
     height: 45px;
