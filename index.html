@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+      type="module"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-simplyscroll/2.1.1/jquery.simplyscroll.min.js"
+      integrity="sha512-i8BU+cmsrlyKOPFSCdO4x4wHXvjg6YIXy6K/PsPL0/3F89ccSgk06wDBP5FTyiGDzVNADQhal1dA1DHH2JB0Rw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <section>
+      <ul class="name">
+        <li>UP & DOWN GAME</li>
+        <li>UP & DOWN GAME</li>
+        <li>UP & DOWN GAME</li>
+        <li>UP & DOWN GAME</li>
+      </ul>
+      <div id="wrap">
+        <div class="mcImg">
+          <img src="img/ww3.gif" alt="게임기" class="machine" />
+          <div class="resultWrap">
+            <div id="result">결과화면 : UP/DOWN/BINGO!</div>
+            <img src="img/upa-012.png" alt="위화살표" class="up" />
+            <img src="img/downa-01.png" alt="아래화살표" class="down" />
+
+            <div class="bot">
+              <input
+                id="user"
+                placeholder="1부터 100까지의 수"
+                onkeypress="
+                  if (event.keyCode == 13) {
+                    play();
+                  }
+                "
+              />
+              <div id="chance">남은찬스 : 5번</div>
+              <div class="btnWrap">
+                <button id="play">시작</button>
+                <button id="reset">재시작</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chat">
+          <div class="chatInner">
+            <img src="img/chatm-01.png" alt="대화창" />
+            <p>1 ~ 100까지의 수를 입력하고</p>
+            <p>5번 내로 정답을 맞혀보세요!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="js/custom.js"></script>
+    <script>
+      $(function () {
+        $(".name").simplyScroll({
+          speed: 1,
+          pauseOnHover: false,
+          pauseOnTouch: false,
+          direction: "backwards",
+        });
+      });
+    </script>
+  </body>
+</html>

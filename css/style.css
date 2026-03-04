@@ -1,0 +1,470 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+@font-face {
+  font-family: "NunFont";
+  src: url("../font/neodgm.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "NunFont", sans-serif;
+  background: url(../img/bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+section {
+  width: 100%;
+  height: 100vh;
+}
+ul {
+  list-style: none;
+}
+
+.name {
+  display: flex;
+  font-size: 3rem;
+  color: hotpink;
+}
+.name li {
+  width: 500px;
+  flex-shrink: 0;
+  text-align: center;
+  margin-right: 30px;
+}
+.simply-scroll-clip {
+  width: 100%;
+  overflow: hidden;
+}
+#wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* 게임기 */
+.mcImg {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 0;
+  opacity: 0;
+  visibility: hidden;
+  object-fit: cover;
+  transform: scale(0.95);
+  transition:
+    opacity 1s ease,
+    transform 1s ease,
+    visibility 0s 1s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mcImg.show {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+  width: 100%;
+  height: 100vh;
+}
+.mcImg .machine {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+/* 위아래 화살표 */
+
+.mcImg .up {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  transform: translateX(-50%);
+}
+.mcImg .down {
+  position: absolute;
+  left: 50%;
+  top: 12%;
+  transform: translateX(-50%);
+}
+.up,
+.down {
+  opacity: 0;
+}
+/* 위로 올라가는 애니메이션 */
+@keyframes arrowUp {
+  0% {
+    transform: translate(-50%, 10px);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -10px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -25px);
+    opacity: 0;
+  }
+}
+
+/* 아래로 내려가는 애니메이션 */
+@keyframes arrowDown {
+  0% {
+    transform: translate(-50%, -10px);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, 10px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 25px);
+    opacity: 0;
+  }
+}
+
+.arrowUpAon {
+  display: block !important;
+  animation: arrowUp 0.8s ease-in-out infinite;
+}
+
+.arrowDownAon {
+  display: block !important;
+  animation: arrowDown 0.8s ease-in-out infinite;
+}
+
+#result {
+  height: 80px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+  font-size: 2rem;
+  padding-top: 40px;
+  color: #fff;
+  top: 0;
+  left: 0;
+}
+.resultWrap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.bot {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1%;
+}
+
+/* 대화창 */
+
+.chat {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.5s ease,
+    visibility 0s 0s;
+}
+
+.chat.hide {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.5s ease,
+    visibility 0s 0.5s;
+}
+
+.chatInner {
+  position: relative;
+  width: 55%;
+}
+
+.chatInner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chatInner p {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 2.5vw;
+  white-space: nowrap;
+  text-shadow: 0 0 10px #000;
+}
+
+.chatInner p:first-of-type {
+  top: 15%;
+}
+
+.chatInner p:last-of-type {
+  bottom: 15%;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.neon {
+  color: #ff8ef5;
+  text-shadow:
+    0 0 3px #ffbdf8,
+    0 0 6px #ffbdf8,
+    0 0 10px #ff7ae6,
+    0 0 15px #ff4bd3;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.bounce {
+  display: inline-block;
+  animation: bounce 0.4s ease infinite alternate;
+}
+
+/* 입력창 */
+#user {
+  width: 280px;
+  height: 50px;
+  font-size: 1.5rem;
+  text-align: center;
+  border: 3px solid #333;
+  border-radius: 12px;
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.btnWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+/* 시작 버튼 */
+#play {
+  width: 150px;
+  height: 70px;
+  border: none;
+  cursor: pointer;
+  background: url(../img/btn1-01-01-01.png);
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.4));
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease;
+  font-size: 1.5rem;
+  font-family: "NunFont";
+}
+
+/* 재시작 버튼 */
+#reset {
+  width: 150px;
+  height: 70px;
+  background: url(../img/btn2m-01.png);
+  border: none;
+  cursor: pointer;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.4));
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease;
+  font-size: 1.5rem;
+  font-family: "NunFont";
+}
+
+#play:hover,
+#reset:hover {
+  transform: scale(0.95);
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+#chance {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1%;
+  color: #000;
+  opacity: 0;
+}
+#chance.on {
+  opacity: 1;
+}
+/* gameover */
+.gameover {
+  font-size: 5rem;
+  color: #ff3b3b;
+  text-shadow: 0 0 10px #ff0000;
+}
+
+/* 폭죽 */
+dotlottie-player {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+@media (min-width: 601px) and (max-width: 1199px) {
+  #result {
+    height: 80px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    font-size: 2.5vw;
+    padding-top: 40px;
+    color: #fff;
+    top: 0;
+    left: 0;
+  }
+  #chance {
+    width: 100%;
+    text-align: center;
+    font-size: 2.5vw;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+    color: #000;
+    opacity: 0;
+  }
+  .chatInner p {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 2.3vw;
+    white-space: nowrap;
+    text-shadow: 0 0 10px #000;
+  }
+}
+@media (max-width: 600px) {
+  #result {
+    height: 80px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    font-size: 3.5vw;
+    padding-top: 40px;
+    color: #fff;
+    top: 0;
+    left: 0;
+  }
+  #user {
+    width: 280px;
+    height: 50px;
+    font-size: 1.2rem;
+    text-align: center;
+    border: 3px solid #333;
+    border-radius: 12px;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  #chance {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+    color: #000;
+    opacity: 0;
+  }
+  .chatInner p {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 2.5vw;
+    white-space: nowrap;
+    text-shadow: 0 0 10px #000;
+  }
+  #play {
+    width: 150px;
+    height: 70px;
+    border: none;
+    cursor: pointer;
+    background: url(../img/btn1-01-01-01.png);
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.4));
+    transition:
+      transform 0.15s ease,
+      filter 0.15s ease;
+    font-size: 1rem;
+    font-family: "NunFont";
+  }
+
+  #reset {
+    width: 150px;
+    height: 70px;
+    background: url(../img/btn2m-01.png);
+    border: none;
+    cursor: pointer;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.4));
+    transition:
+      transform 0.15s ease,
+      filter 0.15s ease;
+    font-size: 1rem;
+    font-family: "NunFont";
+  }
+}
