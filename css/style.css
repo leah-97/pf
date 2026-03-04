@@ -88,12 +88,14 @@ ul {
   left: 50%;
   top: 15%;
   transform: translateX(-50%);
+  pointer-events: none;
 }
 .mcImg .down {
   position: absolute;
   left: 50%;
   top: 12%;
   transform: translateX(-50%);
+  pointer-events: none;
 }
 .up,
 .down {
@@ -411,11 +413,11 @@ dotlottie-player {
     top: 0;
     left: 0;
   }
-  .mcImg .up {
+  .up,
+  .down {
     width: 100px;
-  }
-  .mcImg .down {
-    width: 100px;
+    height: 100px;
+    object-fit: contain;
   }
   #user {
     width: 200px;
